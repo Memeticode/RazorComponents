@@ -1,0 +1,57 @@
+﻿
+<div class="sidebar-container">
+    @if (@Title != null)
+    {
+        <div class="sidebar-header" @onclick="Toggle">
+            <span class="sidebar-title">@Title</span>
+        </div>
+    }
+    @if (@ChildContent != null)
+    {
+        <div class="sidebar-content" style="display: @(_isExpanded ? "block" : "none");">
+            @ChildContent
+        </div>
+    }
+</div>
+
+<style>
+    .sidebar-container {
+        width: 300px;
+        border-right: 1px solid #ddd;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #f5f5f5;
+    }
+
+    .sidebar-header {
+        padding: 8px 12px;
+        background-color: #eee;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .sidebar-content {
+        padding: 12px;
+        overflow-y: auto;
+        height: calc(100% - 36px);
+    }
+</style>
+
+@code
+{
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    protected bool _isExpanded = true;
+
+    protected void Toggle()
+    {
+        _isExpanded = !_isExpanded;
+    }
+
+}

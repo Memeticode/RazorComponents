@@ -1,0 +1,18 @@
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+<div id="@ElementId" style="width: 100%; height: 100%;"></div>
+
+@code {
+    [Parameter] public string ElementId { get; set; } = $"plotly-chart-{Guid.NewGuid()}";
+    [Parameter] public string? DataJson { get; set; }
+    [Parameter] public string? LayoutJson { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("renderPlotlyChart", ElementId, DataJson, LayoutJson);
+        }
+    }
+}
