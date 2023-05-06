@@ -1,6 +1,7 @@
 *.dll
 *.pdb
 *.exe
+*.zrg
 
 /RazorComponents/.vs/RazorComponents
 /RazorComponents/RazorComponentWorkshop/obj
