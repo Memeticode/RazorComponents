@@ -1,10 +1,7 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿*.dll
+*.pdb
+*.exe
 
 /RazorComponents/.vs/RazorComponents
 /RazorComponents/RazorComponentWorkshop/obj
 /RazorComponents/RazorComponentWorkshop/bin/
-*.dll
-*.pdb
-*.exe
