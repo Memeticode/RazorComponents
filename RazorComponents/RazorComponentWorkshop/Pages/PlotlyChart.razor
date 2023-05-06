@@ -1,0 +1,23 @@
+﻿@page "/plotly-chart"
+
+<PageTitle>Plotly Chart</PageTitle>
+
+<h1>Plotly Chart</h1>
+
+<PlotlyExample DataJson="@DataJson" LayoutJson="@LayoutJson" />
+
+@code {
+    private string DataJson = @"
+    [
+        {
+            ""x"": [1, 2, 3, 4],
+            ""y"": [10, 15, 13, 17],
+            ""type"": ""scatter""
+        }
+    ]";
+
+    private string LayoutJson = @"
+    {
+        ""title"": ""Basic Plotly Chart""
+    }";
+}

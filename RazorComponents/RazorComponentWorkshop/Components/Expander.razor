@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+<div class="expander-container" @onclick="Toggle">
+    <div class="expander-header">
+        <span class="expander-icon">@(_isExpanded ? "-" : "+")</span>
+        <span>@Title</span>
+    </div>
+    <div class="expander-content" style="display: @(_isExpanded ? "block" : "none");">
+        @ChildContent
+    </div>
+</div>
+
+<style>
+    .expander-container {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .expander-header {
+        padding: 8px 12px;
+        background-color: #f5f5f5;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .expander-icon {
+        font-weight: bold;
+        margin-right: 8px;
+    }
+
+    .expander-content {
+        padding: 12px;
+    }
+</style>
+
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } =@<p>Default</p>;
+
+    protected bool _isExpanded;
+
+    protected void Toggle()
+    {
+        _isExpanded = !_isExpanded;
+    }
+}
